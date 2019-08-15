@@ -12,6 +12,7 @@
     <artifactId>fist_springboot</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>first_springboot</name>
+    <packaging>pom</packaging>
     <description>first_springboot</description>
 
     <properties>
@@ -31,24 +32,33 @@
                 <scope>runtime</scope>
                 <optional>true</optional>
             </dependency>
-            <dependency>
+            <!--<dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-configuration-processor</artifactId>
                 <optional>true</optional>
-            </dependency>
-            <dependency>
+            </dependency>-->
+            <!--<dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-test</artifactId>
                 <scope>test</scope>
-            </dependency>
+            </dependency>-->
         </dependencies>
     </dependencyManagement>
 
     <build>
         <plugins>
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M3</version>
+                <configuration>
+                    <skipTests>true</skipTests>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+
             </plugin>
         </plugins>
     </build>
