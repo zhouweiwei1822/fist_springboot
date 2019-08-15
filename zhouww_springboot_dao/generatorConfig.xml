@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <!--mysql 连接数据库jar 这里选择自己本地位置-->
+    <classPathEntry location="D:\maven\repository\com\oracle\ojdbc14\10.2.0.4.0\ojdbc14-10.2.0.4.0.jar" />
+    <context id="testTables" targetRuntime="MyBatis3">
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@192.168.8.125:1522:orcl" userId="ips_hqk_basic"
+                        password="ips_hqk_basic">
+            <!-- 针对oracle数据库 -->
+            <property name="remarksReporting" value="true"></property>
+        </jdbcConnection>
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+           NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- targetProject:生成PO类的位置 -->
+        <javaModelGenerator targetPackage="com.data.interfaces.modules.entity"
+                            targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!-- targetProject:mapper映射文件生成的位置
+           如果maven工程只是单独的一个工程，targetProject="src/main/java"
+           若果maven工程是分模块的工程，targetProject="所属模块的名称"，例如：
+           targetProject="ecps-manager-mapper"，下同-->
+        <sqlMapGenerator targetPackage="mappings.interfacemap"
+                         targetProject="src/main/resources">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+        <!-- targetPackage：mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.data.interfaces.modules.dao"
+                             targetProject="src/main/java">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+        <!-- 指定数据库表 -->
+        <!--<table schema="ips_hqk_basic" tableName="tbl_bank_info" domainObjectName="Bank" enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"></table>
+         <table schema="ips_hqk_basic" tableName="tbl_zbank_info" domainObjectName="Zbank" enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"></table>
+         <table schema="ips_hqk_basic" tableName="tbl_group_mcc" domainObjectName="GroupBusMcc" enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"></table>
+         <table schema="ips_hqk_basic" tableName="tbl_business_mcc" domainObjectName="BusinessMcc" enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"></table>
+         <table schema="ips_hqk_basic" tableName="tbl_sys_config_oms" domainObjectName="SystemConfig" enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"></table>
+         <table schema="ips_hqk_basic" tableName="tbl_media_info" domainObjectName="Media" enableCountByExample="false" enableUpdateByExample="false"
+                enableDeleteByExample="false" enableSelectByExample="false"></table>-->
+        <!--<table schema="ips_hqk_basic" tableName="tbl_region_code_new" domainObjectName="RegionCode" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>-->
+        <!--
+        <table schema="ips_hqk_basic" tableName="tbl_pub_order_base" domainObjectName="PubOrderBase" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+         -->
+        <!--
+        <table schema="ips_hqk_basic" tableName="tbl_pub_order_detail" domainObjectName="PubOrderDetail" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+        <table schema="ips_hqk_basic" tableName="tbl_opr_wx_bind" domainObjectName="PubOprWxBind" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+        <table schema="ips_hqk_basic" tableName="TBL_CHANGE_REASON" domainObjectName="ChangeReason" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+        <table schema="ips_hqk_basic" tableName="TBL_TFS_FILE" domainObjectName="TfsFile" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+        <table schema="ips_hqk_basic" tableName="tbl_mcht_user" domainObjectName="MchtUser" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+               -->
+
+        <!--
+        <table schema="ips_hqk_basic" tableName="tbl_mcht_base" domainObjectName="MchtBase" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+        <table schema="ips_hqk_basic" tableName="tbl_opr_info" domainObjectName="Operator" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+        <table schema="ips_hqk_basic" tableName="tbl_brh_info" domainObjectName="Branch" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+        <table schema="ips_hqk_basic" tableName="tbl_acct_info" domainObjectName="Account" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+        <table schema="ips_hqk_basic" tableName="tbl_pub_order_base" domainObjectName="OrderBase"></table>
+        <table schema="ips_hqk_basic" tableName="tbl_pub_order_detail" domainObjectName="OrderDetail"></table>-->
+       <!-- <table schema="ips_hqk_basic" tableName="tbl_opr_info" domainObjectName="Operator" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false" ></table>
+        <table schema="ips_hqk_basic" tableName="tbl_brh_info" domainObjectName="BrhInfo" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+        <table schema="ips_hqk_basic" tableName="tbl_bank_info" domainObjectName="BankInfo" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+        <table schema="ips_hqk_basic" tableName="tbl_zbank_info" domainObjectName="ZbankInfo" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>-->
+      <!--  <table schema="ips_hqk_basic" tableName="tbl_role_group" domainObjectName="RoleGroup" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>-->
+      <!--  <table schema="ips_hqk_basic" tableName="TBL_SYS_CONFIG_OMS" domainObjectName="SysConfigOms" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+                <table schema="ips_hqk_basic" tableName="tbl_card_bin_info" domainObjectName="CardBinInfo" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+               <table schema="ips_hqk_basic" tableName="tbl_media_info" domainObjectName="MediaInfo" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+               <table schema="ips_hqk_basic" tableName="tbl_task_info" domainObjectName="TaskInfo" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+               <table schema="ips_hqk_basic" tableName="tbl_task_detail" domainObjectName="TaskDetail" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+
+-->
+       <!-- <table schema="ips_hqk_basic" tableName="tbl_rule_elem" domainObjectName="RuleElem" enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"></table>
+-->
+
+
+
+
+
+
+
+    </context>
+</generatorConfiguration>
