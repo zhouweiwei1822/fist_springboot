@@ -1,0 +1,10 @@
+spring:
+  jpa:
+    database: h2 #h2配置
+    hibernate:
+      ddl-auto: update #配置方式
+      #数据库连接设置
+  datasource:
+    url: jdbc:h2:mem:dbtest #配置h2的连接地址
+    data-username: sa
+    data-password: sa
