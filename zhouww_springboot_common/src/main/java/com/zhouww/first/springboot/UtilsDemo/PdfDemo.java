@@ -24,7 +24,7 @@ public class PdfDemo {
         //设置pdf纸张格式A4
         document.setPageSize(PageSize.A4);
         // 设置文档标题
-        document.addTitle("合作机构确认分润函");
+        document.addTitle("确认分润函");
         // 设置字体格式 解决中文不显示
         BaseFont baseFont = BaseFont.createFont("STSong-Light", "UniGB-UCS2-H", BaseFont.NOT_EMBEDDED);
         // 设置字体样式
@@ -33,7 +33,7 @@ public class PdfDemo {
         fp.setSize(32);
         fp.setStyle(Font.BOLD);
         // 设置第一行文件信息内容
-        Paragraph p=new Paragraph("合作机构确认分润函",fp);
+        Paragraph p=new Paragraph("确认分润函",fp);
         // 设置文字信息居中 1是居中 2是靠右对齐 3是靠左对齐
         p.setAlignment(1);
         // 添加到文档中将 段落内容
@@ -46,7 +46,7 @@ public class PdfDemo {
         fCommon.setSize(12);
         fCommon.setStyle(Font.NORMAL);
         // 设置段落内容
-        Paragraph pBrhName=new Paragraph("(填写公司名称)",fCommon);
+        Paragraph pBrhName=new Paragraph("(填写XXX)",fCommon);
         // 将段落添加到文档中
         document.add(pBrhName);
         //document.add(new Chunk("\n"));
@@ -54,7 +54,7 @@ public class PdfDemo {
         fCommon1.setColor(BaseColor.BLACK);
         fCommon1.setSize(12);
         fCommon1.setStyle(Font.NORMAL);
-        Paragraph pDesc=new Paragraph("月交易情况如下:",fCommon1);
+        Paragraph pDesc=new Paragraph("XXX情况如下:",fCommon1);
         document.add(pDesc);
         document.add(new Chunk("\n"));
 
@@ -68,13 +68,13 @@ public class PdfDemo {
         f8.setColor(BaseColor.BLACK);
         f8.setStyle(Font.NORMAL);
         // 内容标题
-        pdfPCell=new PdfPCell(new Paragraph("交易类型",f8));
+        pdfPCell=new PdfPCell(new Paragraph("XXX类型",f8));
         pdfPCell.setHorizontalAlignment(1);
         tble.addCell(pdfPCell);
-        pdfPCell=new PdfPCell(new Paragraph("交易金额",f8));
+        pdfPCell=new PdfPCell(new Paragraph("XXX金额",f8));
         pdfPCell.setHorizontalAlignment(1);
         tble.addCell(pdfPCell);
-        pdfPCell=new PdfPCell(new Paragraph("分润金额",f8));
+        pdfPCell=new PdfPCell(new Paragraph("XXX金额",f8));
         pdfPCell.setHorizontalAlignment(3);
         tble.addCell(pdfPCell);
         // 退单金额统计
@@ -84,28 +84,28 @@ public class PdfDemo {
 
 
         // 详细内容1
-        PdfUtils. setCellInfo( pdfPCell, tble, f8, "线下POS收单","444","444");
+        PdfUtils. setCellInfo( pdfPCell, tble, f8, "XXX收单","444","444");
         // 详细内容
-        PdfUtils. setCellInfo( pdfPCell, tble, f8, "退单",orderRetunTotal,"-"+orderRetunTotal);
+        PdfUtils. setCellInfo( pdfPCell, tble, f8, "XXX退单",orderRetunTotal,"-"+orderRetunTotal);
         //添加空行
         for(int i=0;i<5;i++){
             PdfUtils. setCellInfo( pdfPCell, tble, f8, " "," "," ");
         }
         // 添加合计内容
-        PdfUtils.setCellInfo( pdfPCell, tble, f8, "合计","444","444");
+        PdfUtils.setCellInfo( pdfPCell, tble, f8, "XXX合计","444","444");
 
         // 添加表格边框为空白
         PdfUtils. setCellINoBorder(pdfPCell, tble, f8, " ", " ", " ");
-        PdfUtils. setCellINoBorder(pdfPCell, tble, f8, "结算账户信息", " ", " ");
-        PdfUtils.setCellINoBorder(pdfPCell, tble, f8, "户名：", " ", " ");
-        PdfUtils. setCellINoBorder(pdfPCell, tble, f8, "账号：", " ", " ");
-        PdfUtils. setCellINoBorder(pdfPCell, tble, f8, "开户行：", " ", " ");
+        PdfUtils. setCellINoBorder(pdfPCell, tble, f8, "XXX信息", " ", " ");
+        PdfUtils.setCellINoBorder(pdfPCell, tble, f8, "XXX户名：", " ", " ");
+        PdfUtils. setCellINoBorder(pdfPCell, tble, f8, "XXX账号：", " ", " ");
+        PdfUtils. setCellINoBorder(pdfPCell, tble, f8, "XXX行：", " ", " ");
         PdfUtils. setCellINoBorder(pdfPCell, tble, f8, " ", " ", " ");
         document.add(tble);
         // 添加描述
         PdfPTable table1=new PdfPTable(1);
         PdfPCell contentCell=null;
-        PdfUtils.setSingleCellINoBorderRight( contentCell,table1 , fCommon1,"请贵公司对相关数据信息核实，并开具增值税专用发票");
+        PdfUtils.setSingleCellINoBorderRight( contentCell,table1 , fCommon1,"XXX对相关数据信息核实，并开具增值税专用发票");
         document.add(table1);
 
         PdfPTable table2=new PdfPTable(3);
@@ -114,7 +114,7 @@ public class PdfDemo {
         table2.setTotalWidth(table2With);
         table2.setHorizontalAlignment(3);
         PdfPCell contentCell1=null;
-        PdfUtils.setCellInfo(contentCell1,table2,fCommon1,3,2,3,"发票为6%的增值税专用发票金额：", "444","元");
+        PdfUtils.setCellInfo(contentCell1,table2,fCommon1,3,2,3,"XXX增值税专用发票金额：", "444","元");
         document.add(table2);
 
 
@@ -123,10 +123,10 @@ public class PdfDemo {
         // 添加一个空白行
         PdfUtils.setSingleCellINoBorderRight( contentCell3,table3 , fCommon1," ");
         // 添加内容
-        PdfUtils. setSingleCellINoBorderRight( contentCell3,table3 , fCommon1,"请根据实际情况开票，如发票金额错误，我司将会退还发票，收到正确发票后在进行处理，谢谢！");
-        PdfUtils. setSingleCellINoBorderRight( contentCell3,table3 , fCommon1,"开票信息如下：");
-        PdfUtils.setSingleCellINoBorderRight( contentCell3,table3 , fCommon1,"   发票收到并确认后我们会发放当月分润。");
-        PdfUtils.setSingleCellINoBorderRight( contentCell3,table3 , fCommon1,"请贵司对以上数据及银行账户信息进行核实并确认。如有出入请及时告知。");
+        PdfUtils. setSingleCellINoBorderRight( contentCell3,table3 , fCommon1,"XXX，XXX，XXXXXXXXXXXXX，XXXXXXXXXXXXX，谢谢！");
+        PdfUtils. setSingleCellINoBorderRight( contentCell3,table3 , fCommon1,"XXX信息如下：");
+        PdfUtils.setSingleCellINoBorderRight( contentCell3,table3 , fCommon1,"   XXXXXXXXXXXXXXXXXXXXXXXXXX。");
+        PdfUtils.setSingleCellINoBorderRight( contentCell3,table3 , fCommon1,"XXXXXXXXXXXXXXXXXXXXXXXXXX。XXXXXXXXXXXXXXXXXXXXXXXXXX。");
         document.add(table3);
 
 
@@ -136,9 +136,9 @@ public class PdfDemo {
         table4.setTotalWidth(table4With);
         table4.setHorizontalAlignment(3);
         PdfPCell contentCell4=null;
-        PdfUtils.setCellInfo(contentCell4,table4,fCommon1,3,2,3," ", "公司签章："," ");
+        PdfUtils.setCellInfo(contentCell4,table4,fCommon1,3,2,3," ", "XXX签章："," ");
 
-        PdfUtils.setCellInfo(contentCell4,table4,fCommon1,3,2,3," ", "日期："," ");
+        PdfUtils.setCellInfo(contentCell4,table4,fCommon1,3,2,3," ", "XX日期："," ");
 
         document.add(table4);
         document.close();
