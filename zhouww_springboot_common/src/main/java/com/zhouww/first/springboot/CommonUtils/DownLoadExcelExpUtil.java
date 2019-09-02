@@ -22,6 +22,11 @@ import java.io.StringWriter;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * 生产excle工具模板
+ * @author zhouweiwei
+ * @since 1.0.0
+ */
 public class DownLoadExcelExpUtil {
 
     public  static byte[]  exportExcel(String sheetName, List<?> dataList,

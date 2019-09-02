@@ -9,7 +9,11 @@ import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 
 import java.awt.*;
-
+/**
+ * PDF工具
+ * @author zhouweiwei
+ * @since 1.0.0
+ */
 public class PdfUtils {
     /**
      * 设置字体
@@ -22,6 +26,7 @@ public class PdfUtils {
     public static Font setFont(Float fontsize, BaseColor color, Boolean isBold) {
         Font  font=null;
         try {
+            // 设置该字体 可以解决中文内容不显示的问题
             BaseFont baseFont = BaseFont.createFont("STSong-Light", "UniGB-UCS2-H", BaseFont.NOT_EMBEDDED);
 
         } catch (Exception e) {

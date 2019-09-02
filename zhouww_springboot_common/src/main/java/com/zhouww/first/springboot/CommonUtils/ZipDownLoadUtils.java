@@ -9,7 +9,11 @@ import org.apache.commons.lang.StringUtils;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.OutputStream;
-
+/**
+ * zip压缩文件操作工具
+ * @author zhouweiwei
+ * @since 1.0.0
+ */
 public class ZipDownLoadUtils {
     /**
      * 直接下载zip文件 多个文件通过流处理
