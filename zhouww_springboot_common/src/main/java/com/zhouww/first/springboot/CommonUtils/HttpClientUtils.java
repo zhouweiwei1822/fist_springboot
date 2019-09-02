@@ -12,8 +12,12 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Map;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.client.MultipartBodyBuilder;
+import org.springframework.web.multipart.support.MultipartFilter;
 
 /**
  * 用于模拟浏览器请求的工具
@@ -91,6 +95,17 @@ public class HttpClientUtils {
        String urlP=url+"?"+param;
        String resultStr= doGetStringJson(urlP);
         return resultStr;
+    }
+
+    /**
+     * pos请获取
+     * @param url
+     * @param param
+     * @return
+     */
+    public static String postToStringJson(String url,Map<String,String> param){
+       
+        return null;
     }
     public static  void main(String[] agrs0){
         System.out.println(doGet("http://localhost:8080/test","qq=55"));
