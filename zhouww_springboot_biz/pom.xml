@@ -21,8 +21,16 @@
 
     <dependencies>
 
-
-
+        <dependency>
+            <groupId>com.zhouww.first.springboot</groupId>
+            <artifactId>zhouww_springboot_dao</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>com.zhouww.first.springboot</groupId>
+            <artifactId>zhouww_springboot_common</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
     </dependencies>
 
     <build>
