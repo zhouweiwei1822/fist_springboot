@@ -5,6 +5,13 @@ spring:
       ddl-auto: update #配置方式
       #数据库连接设置
   datasource:
-    url: jdbc:h2:mem:dbtest #配置h2的连接地址
-    data-username: sa
-    data-password: sa
+    url: jdbc:h2:mem:dbrr #配置h2的连接地址
+    driver-class-name: org.h2.Driver
+    name: sa
+    password: sa
+    schema: classpath:sql/schema.sql
+    data: classpath:sql/data.sql
+  h2:
+    console:
+      enabled: true
+      path: /h2
