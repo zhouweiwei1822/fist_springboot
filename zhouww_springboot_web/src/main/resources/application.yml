@@ -39,7 +39,7 @@ spring:
         reset-enable: false
         login-username: druid
         login-password: druid
-    sql-script-encoding: UTF-8
+    sql-script-encoding: UTF-8  # 设置创建数据库时编码
 
   h2: #h2平台展示
     console:
