@@ -32,6 +32,7 @@
         <fastjson.version>1.2.58</fastjson.version>
         <json-lib.version>2.4</json-lib.version>
 
+
     </properties>
     <!--定义依赖-->
         <dependencies>
@@ -124,6 +125,16 @@
                 <artifactId>json-lib</artifactId>
                 <version>${json-lib.version}</version>
             </dependency>
+            <dependency>
+                <groupId>com.h2database</groupId>
+                <artifactId>h2</artifactId>
+                <scope>runtime</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>1.1.10</version>
+            </dependency>
 
             <!--<dependency>
                 <groupId>org.springframework.boot</groupId>
@@ -139,7 +150,7 @@
 
 
 
-    <build>
+   <!-- <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -155,7 +166,7 @@
 
             </plugin>
         </plugins>
-    </build>
+    </build>-->
     <!--模块集成-->
     <modules>
         <module>zhouww_springboot_biz</module>

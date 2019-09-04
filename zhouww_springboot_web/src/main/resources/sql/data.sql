@@ -1,40 +1,24 @@
-insert into staff values(
- 's01',
+insert into tbl_user(name,age) values(
  '张三',
  26
 );
-insert into staff values(
- 's02',
+insert into tbl_user(name,age) values(
  '春天里asdglkj',
  23
 );
-insert into staff values(
- 's03',
+insert into tbl_user(name,age) values(
  '刘三',
  26
 );
-insert into staff values(
- 's04',
+insert into tbl_user(name,age) values(
  '万里高空',
  26
 );
-insert into staff values(
- 's05',
+insert into tbl_user(name,age) values(
  '火影',
  26
 );
-insert into staff values(
- 's06',
+insert into tbl_user(name,age) values(
  'xiaopang',
  26
 );
-insert into staff values(
- 's07',
- '海贼王',
- 26
-);
-insert into staff values(
- 's08',
- '王者荣耀',
- 26
-)

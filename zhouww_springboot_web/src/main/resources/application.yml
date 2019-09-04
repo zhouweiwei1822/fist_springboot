@@ -1,3 +1,12 @@
+server:
+  port: 8080
+  servlet:
+    session:
+      timeout: 7200m
+  #tomcat:
+    #uri-encoding: utf-8
+
+# 启动内置 数据库
 spring:
   jpa:
     database: h2 #h2配置
@@ -5,13 +14,63 @@ spring:
       ddl-auto: update #配置方式
       #数据库连接设置
   datasource:
-    url: jdbc:h2:mem:dbrr #配置h2的连接地址
-    driver-class-name: org.h2.Driver
-    name: sa
-    password: sa
-    schema: classpath:sql/schema.sql
-    data: classpath:sql/data.sql
-  h2:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:h2:file:~/.h2/drr;AUTO_SERVER=TRUE;DB_CLOSE_DELAY=-1 #配置h2的连接地址
+    driver-class-name: org.h2.Driver #连接驱动
+    name: sa #设置登录名
+    password: 12345 #密码
+    schema: classpath:sql/schema.sql #创建数据库语句
+    data: classpath:sql/data.sql #创建初始化数据
+    druid:
+      initial-size: 2
+      max-active: 50
+      min-idle: 5
+      max-wait: 6000
+      pool-prepared-statements: true
+      max-open-prepared-statements: 10
+      test-on-borrow: false
+      test-on-return: false
+      test-while-idle: true
+      time-between-eviction-runs-millis: 6000
+      web-stat-filter:
+        enabled: true
+      stat-view-servlet:
+        enabled: true
+        reset-enable: false
+        login-username: druid
+        login-password: druid
+    sql-script-encoding: UTF-8
+
+  h2: #h2平台展示
     console:
       enabled: true
-      path: /h2
+      path: /h2 #访问路径web
+  #事务配置
+  transaction:
+    rollback-on-commit-failure: true
+  #http:
+    #encoding:
+      #charset: utf-8
+      #enabled: true
+      #force: true
+#mybatis 配置
+mybatis:
+  check-config-location: true
+  type-aliases-package: com.zhouww.first.modules
+  type-handlers-package: com.zhouww.first.modules
+  mapper-locations: /mappers/*.xml
+  configuration:
+    cache-enabled: false
+    lazy-loading-enabled: true
+    aggressive-lazy-loading: true
+    multiple-result-sets-enabled: true
+    use-column-label: true
+    use-generated-keys: false
+    auto-mapping-behavior: partial
+    auto-mapping-unknown-column-behavior: warning
+    default-executor-type: simple
+    map-underscore-to-camel-case: true
+    local-cache-scope: session
+    jdbc-type-for-null: null
+    log-prefix: mybatis_
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
