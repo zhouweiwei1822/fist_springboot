@@ -6,21 +6,26 @@ import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.usermodel.BorderStyle;
-import org.apache.poi.ss.usermodel.FillPatternType;
-import org.apache.poi.ss.usermodel.HorizontalAlignment;
-import org.apache.poi.ss.usermodel.VerticalAlignment;
+import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.*;
 
 import net.sf.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+
 
 /**
  * 生产excle工具模板
@@ -28,6 +33,7 @@ import java.util.List;
  * @since 1.0.0
  */
 public class DownLoadExcelExpUtil {
+    private static Logger logger=LoggerFactory.getLogger(DownLoadExcelExpUtil.class);
 
     public  static byte[]  exportExcel(String sheetName, List<?> dataList,
                                     List<String> headers,String exportExcelName) {
@@ -171,5 +177,66 @@ public class DownLoadExcelExpUtil {
             throw new RuntimeException(var4);
         }
     }
+
+
+    /**
+     * 解析excle导入内容
+     * @param inputStream
+     * @param filePath
+     * @return
+     * @throws Exception
+     */
+    public static List<String> getSnNoListByStream(InputStream inputStream, String filePath) throws Exception {
+        List<String> list = new ArrayList<String>();
+        try {
+            Workbook workBook = getWorkbook(inputStream, filePath);
+            Sheet sheet = workBook.getSheetAt(0);
+            int rowsNum = sheet.getPhysicalNumberOfRows();
+            if (rowsNum > 5001) {// 如果大于1000行不允许导入
+                throw new Exception("最大允许导入 5000条，请修改后再导入");
+            }
+            for (int i = 1; i < rowsNum; i++) {
+                Row row = sheet.getRow(i);
+                if (row != null) {
+                    Cell cell = row.getCell(0);
+                    //如果单元格是空白的，则继续下一个
+                    if (Cell.CELL_TYPE_BLANK == cell.getCellType()) {
+                        continue;
+                    }
+                    if (Cell.CELL_TYPE_NUMERIC == cell.getCellType()) {
+                        list.add(String.valueOf(cell.getNumericCellValue()));
+                    } else if (Cell.CELL_TYPE_STRING == cell.getCellType()) {
+                        list.add(StringUtils.trim(cell.getStringCellValue()));
+                    } else {
+                        logger.info("文件导入失败");
+
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+
+    /**
+     * 判断导入格式
+     * @param inputStream
+     * @param filePath
+     * @return
+     * @throws Exception
+     */
+    private static Workbook getWorkbook(InputStream inputStream, String filePath) throws Exception {
+        if (filePath.matches("^.+\\.(?i)(xls)$")) {
+            return new HSSFWorkbook(inputStream);
+        } else if (filePath.matches("^.+\\.(?i)(xlsx)$")) {
+            return new XSSFWorkbook(inputStream);
+        } else {
+            logger.info("文件格式错误！");
+            throw new Exception("文件格式错误！");
+        }
+    }
+
 
 }

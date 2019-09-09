@@ -12,6 +12,7 @@ spring:
     database: h2 #h2配置
     hibernate:
       ddl-auto: update #配置方式
+    show-sql: true
       #数据库连接设置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
