@@ -24,7 +24,7 @@
         <itext.version>2.1.7</itext.version>
         <core-renderer.version>R8</core-renderer.version>
         <itext-asian.version>5.2.0</itext-asian.version>
-        <poi.version>3.9</poi.version>
+        <poi.version>3.17</poi.version>
         <poi-ooxml.version>3.9</poi-ooxml.version>
         <jackson-core.version>2.9.9</jackson-core.version>
         <jackson-databind.version>2.9.9</jackson-databind.version>
