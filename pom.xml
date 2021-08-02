@@ -19,7 +19,7 @@
         <java.version>1.8</java.version>
         <httpclient.version>4.5.9</httpclient.version>
         <commons-httpclient.version>3.1</commons-httpclient.version>
-        <commons-compress.version>1.18</commons-compress.version>
+        <commons-compress.version>1.21</commons-compress.version>
         <itextpdf.version>5.5.13.1</itextpdf.version>
         <itext.version>2.1.7</itext.version>
         <core-renderer.version>R8</core-renderer.version>
