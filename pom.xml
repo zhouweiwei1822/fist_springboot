@@ -29,7 +29,7 @@
         <jackson-core.version>2.9.9</jackson-core.version>
         <jackson-databind.version>2.9.9</jackson-databind.version>
         <jackson.module.version>2.9.9</jackson.module.version>
-        <fastjson.version>1.2.58</fastjson.version>
+        <fastjson.version>1.2.83</fastjson.version>
         <json-lib.version>2.4</json-lib.version>
 
 
